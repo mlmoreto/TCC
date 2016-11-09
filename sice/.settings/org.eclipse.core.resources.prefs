@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/templates/cliente/cadastro-cliente.html=ISO-8859-1
+encoding//src/main/resources/templates/estabelecimento/cadastro-agenda.html=ISO-8859-1
+encoding//src/main/resources/templates/estabelecimento/cadastro-estabelecimento.html=ISO-8859-1
+encoding//src/main/resources/templates/estabelecimento/cadastro-profissional.html=ISO-8859-1
+encoding//src/main/resources/templates/estabelecimento/cadastro-servico.html=ISO-8859-1
+encoding//src/main/resources/templates/layout/fragments=ISO-8859-1
+encoding//src/main/resources/templates/layout/fragments/MenuLateral.html=ISO-8859-1
+encoding//src/main/webapp=UTF-8
+encoding/<project>=UTF-8

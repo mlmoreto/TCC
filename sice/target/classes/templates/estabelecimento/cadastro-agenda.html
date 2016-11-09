@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+
+<head></head>
+	
+<body>
+
+  <section layout:fragment="conteudo">
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cadastro de agenda
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${agenda}" class="form-vertical  js-form-loading">
+		
+		    <!-- ele retorna uma lista de erros e faz tipo um for each e coloca na variÃ¡vel erro -->
+			<div th:each="erro: ${#fields.detailedErrors()}">
+				<span th:text="${erro.message}"></span>
+			</div>
+			
+			<span th:text="${mensagem}"></span>
+			<br>
+			<div class="form-group">
+			    <label for="servico">Serviço</label>
+				<input type="text" id="servico" class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<label for="profissional">Profissional</label>
+				<input id="profissional" type="text" class="form-control">
+			</div>
+			
+		    <div id="data_agenda" class="input-append date">
+		      <input type="text"></input>
+		      <span class="add-on">
+		        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+		      </span>
+			</div>
+			
+			<div class="form-group">
+				<label for="horario">Horário</label>
+				<input id="horario" type="text" th:field="*{horario}" class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>				
+			</div>	
+		</form>
+	 </div>
+   </section>
+  </body>
+</html>

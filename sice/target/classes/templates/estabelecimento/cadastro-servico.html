@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+
+<head></head>
+
+<body>
+
+  <section layout:fragment="conteudo">
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cadastro de serviços
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		
+		<form method="POST" th:object="${servico}" class="form-vertical  js-form-loading">
+		
+		    <!-- ele retorna uma lista de erros e faz tipo um for each e coloca na variavel erro -->
+			<div th:each="erro: ${#fields.detailedErrors()}">
+				<span th:text="${erro.message}"></span>
+			</div>
+			
+			<span th:text="${mensagem}"></span>
+			<br>
+			<div class="form-group">
+			    <label for="nome">Nome</label>
+				<input type="text" id="nome" th:field="*{nome_servico}" class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<label for="preco">Preço</label>
+				<input id="preco" type="text" th:field="*{preco}" class="form-control  js-decimal">
+			</div>			
+			
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>				
+				<a href="/sice/estabelecimentos/cadastro-agenda">Página 4</a>
+			</div>
+	
+		</form>
+	</div>
+  </section>
+</body>
+</html>
