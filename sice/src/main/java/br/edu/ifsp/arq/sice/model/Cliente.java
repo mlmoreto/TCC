@@ -4,10 +4,10 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class Cliente {
 
-	private Integer id_cliente;
+	private Integer idCliente;
 	
 	@NotBlank (message = "O nome é obrigatório")
-	private String nome_cliente;
+	private String nomeCliente;
 	
 	@NotBlank (message = "O CPF é obrigatório")
 	private String cpf;
@@ -21,20 +21,20 @@ public class Cliente {
 	@NotBlank (message = "O endereço é obrigatório")
 	private String endereco;
 
-	public Integer getId_cliente() {
-		return id_cliente;
+	public Integer getIdCliente() {
+		return idCliente;
 	}
 
-	public void setId_cliente(Integer id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
 	}
 
-	public String getNome_cliente() {
-		return nome_cliente;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
-	public void setNome_cliente(String nome_cliente) {
-		this.nome_cliente = nome_cliente;
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
 	}
 
 	public String getCpf() {
@@ -68,6 +68,7 @@ public class Cliente {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+
 	
 	
 	

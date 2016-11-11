@@ -1,50 +1,49 @@
 package br.edu.ifsp.arq.sice.model;
 
+import java.math.BigDecimal;
+import java.util.List;
+
+import javax.persistence.OneToMany;
+
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Servico {
 	
-	private Integer id_servico;
+	private Integer idServico;
 	
-	private Integer id_profissional;
+	@OneToMany(mappedBy = "idServico")
+	private List<Profissional> profissionais;	
 	
 	@NotBlank (message = "O nome é obrigatório")
-	private String nome_servico;
+	private String nomeServico;
 	
 	@NotBlank (message = "O preço é obrigatório")
-	private double preco;
+	private BigDecimal preco;
 
-	public Integer getId_servico() {
-		return id_servico;
+	public Integer getIdServico() {
+		return idServico;
 	}
 
-	public void setId_servico(Integer id_servico) {
-		this.id_servico = id_servico;
+	public void setIdServico(Integer idServico) {
+		this.idServico = idServico;
+	}
+	
+	public String getNomeServico() {
+		return nomeServico;
 	}
 
-	public Integer getId_profissional() {
-		return id_profissional;
+	public void setNomeServico(String nomeServico) {
+		this.nomeServico = nomeServico;
 	}
 
-	public void setId_profissional(Integer id_profissional) {
-		this.id_profissional = id_profissional;
-	}
-
-	public String getNome_servico() {
-		return nome_servico;
-	}
-
-	public void setNome_servico(String nome_servico) {
-		this.nome_servico = nome_servico;
-	}
-
-	public double getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
+
 	
 	
 }

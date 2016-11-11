@@ -21,7 +21,7 @@
 
 		<form method="POST" th:object="${agenda}" class="form-vertical  js-form-loading">
 		
-		    <!-- ele retorna uma lista de erros e faz tipo um for each e coloca na variável erro -->
+		    <!-- ele retorna uma lista de erros e faz tipo um for each e coloca na variavel erro -->
 			<div th:each="erro: ${#fields.detailedErrors()}">
 				<span th:text="${erro.message}"></span>
 			</div>

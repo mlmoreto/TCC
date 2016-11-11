@@ -1,8 +1,27 @@
 CREATE TABLE estabelecimento(
-	id_local    BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-	nome_local  VARCHAR(255) NOT NULL,
+	idLocal    BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	nomeLocal  VARCHAR(255) NOT NULL,
 	cnpj	    VARCHAR(255) NOT NULL,
 	endereco    VARCHAR(255) NOT NULL,
 	telefone    VARCHAR(255) NOT NULL,
 	email       VARCHAR(255) NOT NULL
 )Engine=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE servico(
+	idServico BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	nomeServico VARCHAR(255) NOT NULL,
+	preco DECIMAL(10,2) NOT NULL		
+)Engine=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE profissional(
+	idProfissional BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	nomeProfissinal VARCHAR(255) NOT NULL,
+	cpf VARCHAR(255) NOT NULL,
+	telefone VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,	
+	idLocal BIGINT(20) NOT NULL,
+	idServico BIGINT(20) NOT NULL,
+	FOREIGN KEY(idLocal) REFERENCES estabelecimento(idLocal),	
+	FOREIGN KEY(idServico) REFERENCES servico(idServico)	
+)Engine=InnoDB DEFAULT CHARSET=utf8;
+

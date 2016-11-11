@@ -1,14 +1,13 @@
 package br.edu.ifsp.arq.sice.model;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -18,66 +17,52 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "estabelecimento")
 public class Estabelecimento implements Serializable{
 	
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull (message = "O ID é obrigatório")
-	private Long id_local;	
+	private Long idLocal;		
 	
+	@OneToMany(mappedBy = "idLocal")
+	private List<Profissional> profissionais;
 	
-	/*//@NotNull (message = "O ID é obrigatório")
-	@ManyToOne
-	@JoinColumn(name = "id_profissional")	
-	private Profissional id_profissional; //chave estrangeira da classe Profissional*/
-	
-	
-	@NotBlank (message = "O nome é obrigatório")
-	private String nome_local;
-	
+	@NotBlank (message = "O nome é obrigatório")	
+	private String nomeLocal;	
 	
 	@NotBlank (message = "O CNPJ é obrigatório")
-	private String cnpj;
-	
+	private String cnpj;	
 	
 	@NotBlank (message = "O endereço é obrigatório")
-	private String endereco;
-	
+	private String endereco;	
 	
 	@NotBlank (message = "O telefone é obrigatório")
-	private String telefone;
-	
+	private String telefone;	
 	
 	@NotBlank (message = "O e-mail é obrigatório")
-	private String email;	
-
-	public Long getId_local() {
-		return id_local;
-	}
-
-	public void setId_local(Long id_local) {
-		this.id_local = id_local;
-	}
+	private String email;		
 	
-
-	/*public Profissional getId_profissional() {
-		return id_profissional;
+	public Long getIdLocal() {
+		return idLocal;
 	}
 
-	public void setId_profissional(Profissional id_profissional) {
-		this.id_profissional = id_profissional;
-	}*/
-
-	public String getNome_local() {
-		return nome_local;
+	public void setIdLocal(Long idLocal) {
+		this.idLocal = idLocal;
 	}
 
-	public void setNome_local(String nome_local) {
-		this.nome_local = nome_local;
+	public List<Profissional> getProfissionais() {
+		return profissionais;
+	}
+
+	public void setProfissionais(List<Profissional> profissionais) {
+		this.profissionais = profissionais;
+	}
+
+	public String getNomeLocal() {
+		return nomeLocal;
+	}
+
+	public void setNomeLocal(String nomeLocal) {
+		this.nomeLocal = nomeLocal;
 	}
 
 	public String getCnpj() {
@@ -111,12 +96,12 @@ public class Estabelecimento implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_local == null) ? 0 : id_local.hashCode());
+		result = prime * result + ((idLocal == null) ? 0 : idLocal.hashCode());
 		return result;
 	}
 
@@ -129,10 +114,10 @@ public class Estabelecimento implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Estabelecimento other = (Estabelecimento) obj;
-		if (id_local == null) {
-			if (other.id_local != null)
+		if (idLocal == null) {
+			if (other.idLocal != null)
 				return false;
-		} else if (!id_local.equals(other.id_local))
+		} else if (!idLocal.equals(other.idLocal))
 			return false;
 		return true;
 	}

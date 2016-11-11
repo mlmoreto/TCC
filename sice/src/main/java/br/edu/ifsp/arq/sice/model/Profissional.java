@@ -1,16 +1,12 @@
 package br.edu.ifsp.arq.sice.model;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -20,50 +16,57 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "profissional")
 public class Profissional implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull (message = "O ID é obrigatório.")
-	private Integer id_profissional;
-	
-	@OneToMany(mappedBy = "id_local")
-	private List<Estabelecimento> estabelecimentos;
+	private Integer idProfissional;	
 		
-	@Column(name = "nome_profissional")
+	@NotNull (message = "O ID é obrigatório")
+	@ManyToOne
+	@JoinColumn(name = "idLocal")	
+	private Estabelecimento idLocal; //chave estrangeira da classe Profissional*/
+	
+	@NotNull (message = "O ID é obrigatório")
+	@ManyToOne
+	@JoinColumn(name = "idServico")	
+	private Servico idServico; //chave estrangeira da classe Profissional
+		
 	@NotBlank (message = "O nome é obrigatório")
-	private String nome_profissional;
+	private String nomeProfissional;
 	
-
-	@Column(name = "cpf")
 	@NotBlank (message = "O CPF é obrigatório")
-	private String cpf;
+	private String cpf;	
 	
-	@Column(name = "telefone")
 	@NotBlank (message = "O telefone é obrigatório")
 	private String telefone;
 	
-	@Column(name = "email")
 	@NotBlank (message = "O e-mail é obrigatório")
 	private String email;
-
-	public Integer getId_profissional() {
-		return id_profissional;
+		
+	public Integer getIdProfissional() {
+		return idProfissional;
 	}
 
-	public void setId_profissional(Integer id_profissional) {
-		this.id_profissional = id_profissional;
+	public void setIdProfissional(Integer idProfissional) {
+		this.idProfissional = idProfissional;
 	}
 
-	public String getNome_profissional() {
-		return nome_profissional;
+	public Estabelecimento getIdLocal() {
+		return idLocal;
 	}
 
-	public void setNome_profissional(String nome_profissional) {
-		this.nome_profissional = nome_profissional;
+	public void setIdLocal(Estabelecimento idLocal) {
+		this.idLocal = idLocal;
+	}
+
+	public String getNomeProfissional() {
+		return nomeProfissional;
+	}
+
+	public void setNomeProfissional(String nomeProfissional) {
+		this.nomeProfissional = nomeProfissional;
 	}
 
 	public String getCpf() {
@@ -89,12 +92,12 @@ public class Profissional implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id_profissional == null) ? 0 : id_profissional.hashCode());
+		result = prime * result + ((idProfissional == null) ? 0 : idProfissional.hashCode());
 		return result;
 	}
 
@@ -107,10 +110,10 @@ public class Profissional implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Profissional other = (Profissional) obj;
-		if (id_profissional == null) {
-			if (other.id_profissional != null)
+		if (idProfissional == null) {
+			if (other.idProfissional != null)
 				return false;
-		} else if (!id_profissional.equals(other.id_profissional))
+		} else if (!idProfissional.equals(other.idProfissional))
 			return false;
 		return true;
 	}
