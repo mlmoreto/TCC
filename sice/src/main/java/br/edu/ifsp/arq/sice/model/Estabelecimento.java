@@ -7,9 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -26,6 +27,13 @@ public class Estabelecimento implements Serializable{
 	@OneToMany(mappedBy = "idLocal")
 	private List<Profissional> profissionais;
 	
+	@OneToMany(mappedBy = "idAgenda")
+	private List<Agenda> agendas;
+	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")	
+	private Login idUsuario; //chave estrangeira da classe Estabelecimento*/
+	
 	@NotBlank (message = "O nome é obrigatório")	
 	private String nomeLocal;	
 	
@@ -35,12 +43,15 @@ public class Estabelecimento implements Serializable{
 	@NotBlank (message = "O endereço é obrigatório")
 	private String endereco;	
 	
+	@NotBlank (message = "A cidade é obrigatória")
+	private String cidade;
+	
 	@NotBlank (message = "O telefone é obrigatório")
 	private String telefone;	
 	
 	@NotBlank (message = "O e-mail é obrigatório")
-	private String email;		
-	
+	private String email;	
+
 	public Long getIdLocal() {
 		return idLocal;
 	}
@@ -55,6 +66,14 @@ public class Estabelecimento implements Serializable{
 
 	public void setProfissionais(List<Profissional> profissionais) {
 		this.profissionais = profissionais;
+	}
+
+	public List<Agenda> getAgendas() {
+		return agendas;
+	}
+
+	public void setAgendas(List<Agenda> agendas) {
+		this.agendas = agendas;
 	}
 
 	public String getNomeLocal() {
@@ -81,6 +100,14 @@ public class Estabelecimento implements Serializable{
 		this.endereco = endereco;
 	}
 
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
 	public String getTelefone() {
 		return telefone;
 	}
@@ -95,6 +122,14 @@ public class Estabelecimento implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Login getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Login idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	@Override
