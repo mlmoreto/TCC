@@ -11,9 +11,7 @@ CREATE TABLE estabelecimento(
 	endereco    VARCHAR(255) NOT NULL,
 	cidade		VARCHAR(255) NOT NULL,
 	telefone    VARCHAR(255) NOT NULL,
-	email       VARCHAR(255) NOT NULL,
-	idUsuario   BIGINT(20) NOT NULL,
-	FOREIGN KEY(idUsuario) REFERENCES login(idUsuario)	
+	email       VARCHAR(255) NOT NULL
 )Engine=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE servico(
@@ -24,7 +22,7 @@ CREATE TABLE servico(
 
 CREATE TABLE profissional(
 	idProfissional  BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-	nomeProfissinal VARCHAR(255) NOT NULL,
+	nomeProfissional VARCHAR(255) NOT NULL,
 	cpf 			VARCHAR(255) NOT NULL,
 	telefone 		VARCHAR(255) NOT NULL,
 	email 			VARCHAR(255) NOT NULL,	

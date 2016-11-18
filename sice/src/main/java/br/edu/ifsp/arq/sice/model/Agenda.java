@@ -1,8 +1,7 @@
 package br.edu.ifsp.arq.sice.model;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Timer;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,57 +19,56 @@ public class Agenda implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idAgenda;
+	private Long idAgenda;
 	
 	@ManyToOne
 	@JoinColumn(name = "idCliente")
-	private Integer idCliente; //chave estrangeira da classe Cliente
+	private Cliente idCliente; //chave estrangeira da classe Cliente
 	
 	@ManyToOne
 	@JoinColumn(name = "idProfissional")	
-	private Integer idProfissional; //chave estrangeira da classe Profissional
+	private Profissional idProfissional; //chave estrangeira da classe Profissional
 	
 	@ManyToOne
 	@JoinColumn(name = "idServico")	
-	private Integer idServico; //chave estrangeira da classe Servico
+	private Servico idServico; //chave estrangeira da classe Servico
 
 	@ManyToOne
 	@JoinColumn(name = "idLocal")	
-	private Estabelecimento idLocal; //chave estrangeira da classe Estabelecimento
+	private Estabelecimento idLocal; //chave estrangeira da classe Estabelecimentos
 	
-	private Date dataAgenda;
+	private Calendar dataAgenda;	
 	
-	private Timer horario;
-
-	public Integer getIdAgenda() {
+	
+	public Long getIdAgenda() {
 		return idAgenda;
 	}
 
-	public void setIdAgenda(Integer idAgenda) {
+	public void setIdAgenda(Long idAgenda) {
 		this.idAgenda = idAgenda;
 	}
 
-	public Integer getIdCliente() {
+	public Cliente getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(Integer idCliente) {
+	public void setIdCliente(Cliente idCliente) {
 		this.idCliente = idCliente;
 	}
 
-	public Integer getIdProfissional() {
+	public Profissional getIdProfissional() {
 		return idProfissional;
 	}
 
-	public void setIdProfissional(Integer idProfissional) {
+	public void setIdProfissional(Profissional idProfissional) {
 		this.idProfissional = idProfissional;
 	}
 
-	public Integer getIdServico() {
+	public Servico getIdServico() {
 		return idServico;
 	}
 
-	public void setIdServico(Integer idServico) {
+	public void setIdServico(Servico idServico) {
 		this.idServico = idServico;
 	}
 
@@ -82,22 +80,14 @@ public class Agenda implements Serializable{
 		this.idLocal = idLocal;
 	}
 
-	public Date getDataAgenda() {
+	public Calendar getDataAgenda() {
 		return dataAgenda;
 	}
 
-	public void setDataAgenda(Date dataAgenda) {
+	public void setDataAgenda(Calendar dataAgenda) {
 		this.dataAgenda = dataAgenda;
 	}
 
-	public Timer getHorario() {
-		return horario;
-	}
-
-	public void setHorario(Timer horario) {
-		this.horario = horario;
-	}	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

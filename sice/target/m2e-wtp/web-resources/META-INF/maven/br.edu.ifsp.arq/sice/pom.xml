@@ -41,6 +41,9 @@
 		<!-- MySql -->
 		<mysql-connector-java.version>5.1.39</mysql-connector-java.version>
 		
+		<!-- Spring Data JPA -->
+		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
+		
 	</properties>
 	
 	<build>
@@ -150,6 +153,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Spring Data JPA -->
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-jpa</artifactId>
+		    <version>${spring-data-jpa.version}</version>
 		</dependency>
 		
 	</dependencies>

@@ -1,15 +1,30 @@
 package br.edu.ifsp.arq.sice.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-public class Servico {
+@Entity
+@Table(name = "servico")
+public class Servico implements Serializable{
 	
-	private Integer idServico;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idServico;
 	
 	@OneToMany(mappedBy = "idServico")
 	private List<Profissional> profissionais;	
@@ -23,11 +38,11 @@ public class Servico {
 	@NotBlank (message = "O preço é obrigatório")
 	private BigDecimal preco;
 
-	public Integer getIdServico() {
+	public Long getIdServico() {
 		return idServico;
 	}
 
-	public void setIdServico(Integer idServico) {
+	public void setIdServico(Long idServico) {
 		this.idServico = idServico;
 	}
 

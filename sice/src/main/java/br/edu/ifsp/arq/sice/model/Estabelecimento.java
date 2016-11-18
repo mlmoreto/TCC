@@ -3,6 +3,7 @@ package br.edu.ifsp.arq.sice.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,15 +25,15 @@ public class Estabelecimento implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idLocal;		
 	
-	@OneToMany(mappedBy = "idLocal")
+	@OneToMany(mappedBy = "idLocal", targetEntity = Profissional.class, cascade = CascadeType.ALL)
 	private List<Profissional> profissionais;
 	
-	@OneToMany(mappedBy = "idAgenda")
+	@OneToMany(mappedBy = "idAgenda", targetEntity = Agenda.class, cascade = CascadeType.ALL)
 	private List<Agenda> agendas;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "idUsuario")	
-	private Login idUsuario; //chave estrangeira da classe Estabelecimento*/
+	private Login idUsuario; //chave estrangeira da classe Estabelecimentos*/
 	
 	@NotBlank (message = "O nome é obrigatório")	
 	private String nomeLocal;	
@@ -124,13 +125,13 @@ public class Estabelecimento implements Serializable{
 		this.email = email;
 	}
 
-	public Login getIdUsuario() {
+	/*public Login getIdUsuario() {
 		return idUsuario;
 	}
 
 	public void setIdUsuario(Login idUsuario) {
 		this.idUsuario = idUsuario;
-	}
+	}*/
 
 	@Override
 	public int hashCode() {

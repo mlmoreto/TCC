@@ -23,15 +23,12 @@ public class Profissional implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull (message = "O ID é obrigatório.")
-	private Integer idProfissional;	
+	private Long idProfissional;	
 		
-	@NotNull (message = "O ID é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "idLocal")	
 	private Estabelecimento idLocal; //chave estrangeira da classe Profissional*/
 	
-	@NotNull (message = "O ID é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "idServico")	
 	private Servico idServico; //chave estrangeira da classe Profissional
@@ -51,11 +48,11 @@ public class Profissional implements Serializable{
 	@NotBlank (message = "O e-mail é obrigatório")
 	private String email;
 	
-	public Integer getIdProfissional() {
+	public Long getIdProfissional() {
 		return idProfissional;
 	}
 
-	public void setIdProfissional(Integer idProfissional) {
+	public void setIdProfissional(Long idProfissional) {
 		this.idProfissional = idProfissional;
 	}
 

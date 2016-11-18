@@ -5,14 +5,16 @@ import javax.servlet.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import br.edu.ifsp.arq.sice.config.JPAConfig;
+import br.edu.ifsp.arq.sice.config.ServiceConfig;
 import br.edu.ifsp.arq.sice.config.WebConfig;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	//nao está sendo utilizada no momento
+	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class<?>[] { JPAConfig.class, ServiceConfig.class };
 	}
 
 	@Override

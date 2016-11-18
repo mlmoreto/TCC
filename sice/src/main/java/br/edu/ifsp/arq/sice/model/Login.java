@@ -20,7 +20,7 @@ public class Login implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String idUsuario;
+	private Long idUsuario;
 	
 	@NotBlank (message = "O usuário é obrigatório")
 	private String usuario;
@@ -28,17 +28,17 @@ public class Login implements Serializable{
 	@NotBlank (message = "A senha é obrigatória")
 	private String senha;	
 	
-	@OneToMany(mappedBy = "idUsuario")
-	private List<Estabelecimento> estabelecimentos;
+	/*@OneToMany(mappedBy = "idUsuario")
+	private List<Estabelecimento> estabelecimentos;*/
 	
 	@OneToMany(mappedBy = "idUsuario")
 	private List<Cliente> clientes;
 
-	public String getIdUsuario() {
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(String idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
@@ -58,13 +58,13 @@ public class Login implements Serializable{
 		this.senha = senha;
 	}
 
-	public List<Estabelecimento> getEstabelecimentos() {
+	/*public List<Estabelecimento> getEstabelecimentos() {
 		return estabelecimentos;
 	}
 
 	public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
 		this.estabelecimentos = estabelecimentos;
-	}
+	}*/
 
 	public List<Cliente> getClientes() {
 		return clientes;
